@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "CalculadoraSImples Forms/1.0.0": {
+        "runtime": {
+          "CalculadoraSImples Forms.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CalculadoraSImples Forms/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
