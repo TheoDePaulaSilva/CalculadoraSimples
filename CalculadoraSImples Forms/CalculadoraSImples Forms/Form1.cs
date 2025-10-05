@@ -91,7 +91,7 @@ namespace CalculadoraSImples_Forms
 
         private void buttonTimes_Click(object sender, EventArgs e)
         {
-            textBox1.Text += "x";
+            textBox1.Text += "*";
         }
 
         private void buttonDivision_Click(object sender, EventArgs e)
@@ -127,7 +127,11 @@ namespace CalculadoraSImples_Forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            if (textBox1.Text.StartsWith("+") || textBox1.Text.StartsWith("*") || textBox1.Text.StartsWith("/") || textBox1.Text.StartsWith(","))
+            {
+                textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
+                MessageBox.Show("NÃO É PERMITIDO COMEÇAR COM ESSE SINAL", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -139,12 +143,25 @@ namespace CalculadoraSImples_Forms
         {
             if (Char.IsLetter(e.KeyChar))
             {
-                // 1. Bloqueia a inserção do caractere na TextBox.
-                // O e.Handled = true 'consome' o evento, impedindo que a tecla apareça.
                 e.Handled = true;
-
-                // 2. Exibe a mensagem de aviso (opcional, pode ser irritante para o usuário)
                 MessageBox.Show("NÃO É PERMITIDO INSERIR LETRAS", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void buttonEquals_Click(object sender, EventArgs e)
+        {
+            string expressao = textBox1.Text.Trim();
+            try
+            {
+                DataTable dt = new DataTable();
+                var resultadoObj = dt.Compute(expressao, null);
+                string resultadoStr = resultadoObj.ToString().Replace(",", ".");
+
+                textBox1.Text = Convert.ToDouble(resultadoStr).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro na expressão: {ex.Message}", "Erro de Cálculo");
             }
         }
     }

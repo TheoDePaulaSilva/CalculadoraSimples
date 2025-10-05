@@ -219,6 +219,7 @@ namespace CalculadoraSImples_Forms
             this.buttonEquals.TabIndex = 13;
             this.buttonEquals.Text = "=";
             this.buttonEquals.UseVisualStyleBackColor = false;
+            this.buttonEquals.Click += new System.EventHandler(this.buttonEquals_Click);
             // 
             // buttonPlus
             // 
@@ -255,7 +256,7 @@ namespace CalculadoraSImples_Forms
             this.buttonTimes.Name = "buttonTimes";
             this.buttonTimes.Size = new System.Drawing.Size(66, 55);
             this.buttonTimes.TabIndex = 16;
-            this.buttonTimes.Text = "x";
+            this.buttonTimes.Text = "*";
             this.buttonTimes.UseVisualStyleBackColor = false;
             this.buttonTimes.Click += new System.EventHandler(this.buttonTimes_Click);
             // 
